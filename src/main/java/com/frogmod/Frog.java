@@ -33,8 +33,11 @@ public class Frog implements ModInitializer {
         if (world.getTime() % (20 * 60 * (3 + RANDOM.nextInt(3))) == 0) {
             world.getEntitiesByType(EntityType.FROG, frog -> true).forEach(frogEntity -> {
                 BlockPos frogPos = frogEntity.getBlockPos();
+				double itemX = frogPos.getX();
+                double itemY = frogPos.getY() + 0.5;
+                double itemZ = frogPos.getZ();
                 ItemStack randomItem = DROP_ITEMS.get(RANDOM.nextInt(DROP_ITEMS.size())).copy();
-                world.spawnEntity(new net.minecraft.entity.ItemEntity(world, frogPos.getX(), frogPos.getY(), frogPos.getZ(), randomItem));
+                world.spawnEntity(new net.minecraft.entity.ItemEntity(world, itemX, itemY, itemZ, randomItem));
             });
         }
     }
