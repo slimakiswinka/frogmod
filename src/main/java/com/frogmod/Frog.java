@@ -30,12 +30,12 @@ public class Frog implements ModInitializer {
     }
 
     private void onWorldTick(ServerWorld world) {
-        if (world.getTime() % (20 * 60 * (3 + RANDOM.nextInt(3))) == 0) {
+        if (world.getTime() % (20 * 60 * (2 + RANDOM.nextInt(4))) == 0) {
             world.getEntitiesByType(EntityType.FROG, frog -> true).forEach(frogEntity -> {
                 BlockPos frogPos = frogEntity.getBlockPos();
-				double itemX = frogPos.getX();
-                double itemY = frogPos.getY() + 0.5;
-                double itemZ = frogPos.getZ();
+                double itemX = frogPos.getX() + 0.5;
+                double itemY = frogPos.getY() + 0.75;
+                double itemZ = frogPos.getZ() + 0.5;
                 ItemStack randomItem = DROP_ITEMS.get(RANDOM.nextInt(DROP_ITEMS.size())).copy();
                 world.spawnEntity(new net.minecraft.entity.ItemEntity(world, itemX, itemY, itemZ, randomItem));
             });
